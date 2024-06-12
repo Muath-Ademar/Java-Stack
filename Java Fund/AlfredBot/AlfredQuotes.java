@@ -4,6 +4,7 @@ import javax.print.DocFlavor.STRING;
 public class AlfredQuotes {
     
     public String basicGreeting() {
+        int x=10;
         // You do not need to code here, this is an example method
         return "Hello, lovely to see you. How are you?";
     }
