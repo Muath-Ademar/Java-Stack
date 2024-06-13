@@ -22,11 +22,12 @@ public class BankTest {
           // account1.display();
           account2.display();
           // account3.display();
-          // account1.displayAccountNum();
+          account2.displayAccountNum();
+          account3.displayAccountNum();
           // System.out.println(account1.getTotalMoney());
           // account2.display();
           // account3.display();
-          // BankAccount.BankacountAndtotal();
+          BankAccount.BankacountAndtotal();
           // - each deposit should increase the amount of totalMoney
 
           // Withdrawal Test
