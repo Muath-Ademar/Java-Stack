@@ -16,18 +16,33 @@ public class PuzzleJava {
 return randomNum;
 
 }
-public Char  getRandomLetter(){
-        Random randMachine = new Random();
+public String getRandomLetter(){
+        Random rand = new Random();
+        String [] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        
+            return letters[rand.nextInt(26)];
 
-    String letters = "abcdefghijklmnopqrstuvwxyz"
-    String [] alphabet = new String [26];
-    for (int i = 0; i < alphabet.length; i++){
-            return alphabet.get(randMachine.nextInt(26));
-
-    }
     
 }
 
-
-
+public String generatePassword(){
+    Random rand = new Random();
+    String password = "";
+        for (int i = 0; i<8; i++){
+            password = password + getRandomLetter();
+        }
+        return password;
 }
+public ArrayList<String> setPassword(int length){
+    ArrayList<String> passwordSet = new ArrayList<String>();
+    
+    for (int i = 0; i < length; i++){
+        passwordSet.add(generatePassword());
+    }
+    return passwordSet;
+}
+}
+
+
+
+
