@@ -11,11 +11,19 @@ public class BankAccount {
 
      public int randAcountnum(){
           Random rand = new Random();
-          accountNumber = rand.nextInt(10);
+          int accountNumber = rand.nextInt(10);
           return accountNumber;
      }
-     public void displayAccountNum(){
-          System.out.println(accountNumber);
+     private  void displayAccountNum(){
+          String accnum = "";
+          for (int i = 0; i<10 ; i++){
+               accnum += randAcountnum();
+          }
+          System.out.println(accnum);
+          
+     }
+     public int accountNum(){
+          return accountNumber;
      }
      public double getCheckingBalance() {
           return checkingBalance;
@@ -38,7 +46,7 @@ public class BankAccount {
           accounts++;
           this.checkingBalance = 0;
           this.savingsBalance = 0;
-          randAcountnum();
+          displayAccountNum();
      }
 
      public void deposit(double amountToDeposite, String Account) {
