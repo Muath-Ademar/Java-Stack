@@ -13,7 +13,7 @@ public class Phone extends Device {
 	}
 	public void playGame() {
 		if (this.battery<25) {
-			System.out.println(" the battery is too low for playing a game  " );
+			System.out.println(" the battery is too low for playing  games  " );
 			return;
 
 		}
