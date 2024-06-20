@@ -7,7 +7,7 @@ public class Phone extends Device {
 
 	public void makeCall() {
 		System.out.println(" <-------------calling------------->  " );
-		battery -= 20;
+		battery -= 5;
 		status();
 		
 	}
@@ -19,14 +19,15 @@ public class Phone extends Device {
 		}
 		else {
 		System.out.println(" <-------------Playing a game------------->  " );
-		battery -= 30;
+		battery -= 20;
 		status();
 		}
 
 	}
 	public void charge() {
 		System.out.println(" <-------------charging------------->  " );
-		battery += 100;
+		battery += 50;
 		status();
+
 	}
 }

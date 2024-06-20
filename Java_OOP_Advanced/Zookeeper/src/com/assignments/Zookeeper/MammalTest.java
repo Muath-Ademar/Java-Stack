@@ -11,7 +11,6 @@ public class MammalTest {
 		gorilla.eatBannanas();
 		gorilla.eatBannanas();
 		gorilla.climb();
-		gorilla.displayEnergy();
 		// batTest
 		
 		bat.attackTown();
@@ -20,7 +19,6 @@ public class MammalTest {
 		bat.eatHumans();
 		bat.eatHumans();
 		bat.fly();
-		bat.fly();
-		bat.displayBatEnergy();
+		
 	}
 }

@@ -10,5 +10,9 @@ public static void main(String[] args) {
 	iphone.playGame();
 	iphone.charge();
 	
+
+
+	
+	
 }
 }
