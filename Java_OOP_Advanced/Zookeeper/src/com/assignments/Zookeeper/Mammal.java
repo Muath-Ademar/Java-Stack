@@ -4,8 +4,6 @@ public class Mammal {
 protected int energy = 100;
 
 
-
-
 public int displayEnergy() {
 	 if (this.energy <= 0) {
 	System.out.println("fully exhausted");

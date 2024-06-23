@@ -1,9 +1,10 @@
 package com.assignments.Zookeeper;
 
 public class Bat extends Mammal{
-	
+	public static int test = 500;
 	public Bat() {
 		this.energy = 300;
+
 	}
 
 public void fly() {

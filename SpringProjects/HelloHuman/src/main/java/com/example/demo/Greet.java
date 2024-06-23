@@ -8,11 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class Greet {
 	
     @RequestMapping("/")
-    public String name(@RequestParam(value="name", required = false) String first, String last ) {
-    	if (first  == null && last == null) {
+    public String name(@RequestParam(value="name", required = false) String first
+    	,@RequestParam(value = "last_name", required = false) String last, @RequestParam(value = "last_name", required = false ) Integer times ){
+    	if (first  == null ) {
     		return "Hello There"; 
     	}
-        return "Hello: " + first + last;
+    	else if(last == null) {
+    		return "Hello" + first;
+    	}
+    	else {
+    		return "Hello: " + first + last;
+    	}
+        
     }
 }
 
