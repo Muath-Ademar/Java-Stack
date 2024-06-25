@@ -43,6 +43,12 @@ public class CountController {
 		return "counter.jsp";
 	}
 	
+	@RequestMapping("/your_server/counter/delete")
+	
+	public String delete(HttpSession session) {
+		session.invalidate();
+		return "counter.jsp";
+	}
 
 
 }
