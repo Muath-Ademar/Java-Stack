@@ -1,13 +1,13 @@
-package com.mydomain.mvc;
+package com.codingdojo.helloworld;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MvcApplication {
+public class BookApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MvcApplication.class, args);
+		SpringApplication.run(BookApiApplication.class, args);
 	}
 
 }

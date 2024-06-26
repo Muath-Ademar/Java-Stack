@@ -1,7 +1,4 @@
-package com.mydomain.mvc.controllers;
-
-import com.mydomain.mvc.services.BookService ;
-import com.mydomain.mvc.model.Book; 
+package com.codingdojo.helloworld.controllers;
 
 import java.util.List;
 
@@ -11,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.codingdojo.helloworld.models.Book;
+import com.codingdojo.helloworld.service.BookService;
 
 @RestController
 public class BooksApi {
@@ -46,9 +44,9 @@ public class BooksApi {
         Book book = bookService.updateBook(id, title, desc, lang, numOfPages);
         return book;
     }
-    
-    @RequestMapping(value="/api/books/{id}", method=RequestMethod.DELETE)
-    public void destroy(@PathVariable("id") Long id) {
-        bookService.deleteBook(id);
+        
+        @RequestMapping(value="/api/books/{id}", method=RequestMethod.DELETE)
+        public void destroy(@PathVariable("id") Long id) {
+            bookService.deleteBook(id); 
     }
 }

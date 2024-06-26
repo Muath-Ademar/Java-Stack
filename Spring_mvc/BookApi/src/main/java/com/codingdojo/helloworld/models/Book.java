@@ -1,4 +1,4 @@
-package com.mydomain.mvc.model;
+package com.codingdojo.helloworld.models;
 
 import java.util.Date;
 import jakarta.persistence.Column;

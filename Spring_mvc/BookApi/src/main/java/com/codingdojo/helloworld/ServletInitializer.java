@@ -1,4 +1,4 @@
-package com.mydomain.mvc;
+package com.codingdojo.helloworld;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MvcApplication.class);
+		return application.sources(BookApiApplication.class);
 	}
 
 }
