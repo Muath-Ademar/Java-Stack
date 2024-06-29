@@ -1,5 +1,7 @@
 package com.codingdojo.helloworld.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,4 +24,10 @@ public class SecBookController {
 		model.addAttribute("book", book);
 		return "index.jsp";
 	}
+    @GetMapping("/books")
+    public String index(Model model) {
+        List<Book> books = bookservice.allBooks();
+        model.addAttribute("books", books);
+        return "Books.jsp";
+    }
 }
