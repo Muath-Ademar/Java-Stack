@@ -11,30 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Burger Tracker</h1>
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Burger Name</th>
-			<th>Restaurant Name</th>
-			<th>Rating (out of 5)</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="burger" items="${burgers}">
-			<tr>
-				<td><c:out value="${burger.name}"/></td>
-				<td><c:out value="${burger.restuarant}"/></td>
-				<td><c:out value="${burger.rating}"/></td>
-				<td><a href = "/burger/${burger.id}/edit">Edit</a></td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
-
-<h1>Add burger</h1>
-<form:form action="/burger" method="post" modelAttribute="burger">
+<form:form action="/burger/edit/${burger.id}" method="post" modelAttribute="burger">
+	<input type="hidden" name="_method" value="put">
     <p>
         <form:label path="name">Burger Name</form:label>
         <form:errors path="name"/>
@@ -57,6 +35,7 @@
     </p>    
     <input type="submit" value="Submit"/>
 </form:form>
+
 
 </body>
 </html>
