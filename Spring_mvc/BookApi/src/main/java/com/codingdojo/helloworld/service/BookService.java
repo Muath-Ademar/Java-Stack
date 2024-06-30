@@ -48,6 +48,7 @@ private final BookRepository bookRepository;
 		Optional<Book> optionalBook = bookRepository.findById(id);
 		if(optionalBook.isPresent()) {
 			Book b = new Book();
+			b.setId(id);
 			b.setTitle(title);
 			b.setLanguage(lang);
 			b.setDescription(desc);
