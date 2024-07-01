@@ -25,10 +25,10 @@ public class Burger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    @Size(min = 5, max = 200)
+    @Size(min = 5, max = 200, message = "must be between 5 and 255")
     private String name;
     @NotNull
-    @Size(min = 1, max = 255)
+    @Size(min = 1, max = 255, message = "must be between 1 and 255")
     private String restuarant;
     @NotNull
     @Min(1)
@@ -38,7 +38,7 @@ public class Burger {
     public Burger() {}
     
     @NotNull
-    @Size(min = 5, max = 200)
+    @Size(min = 5, max = 200, message = "must be between 5 and 255")
     private String notes;
     
     public String getNotes() {
