@@ -15,6 +15,8 @@ import com.example.dojoNinjas.models.Ninja;
 import com.example.dojoNinjas.service.DojoService;
 import com.example.dojoNinjas.service.NinjaService;
 
+import jakarta.validation.Valid;
+
 @Controller
 public class NinjaController {
 	
@@ -30,9 +32,10 @@ model.addAttribute("dojos", dojos);
 }
 	
 	@PostMapping("/ninjas")
-public String createNinja(@ModelAttribute("ninjas") Ninja ninja, BindingResult result, Model model) {
+public String createNinja(@Valid @ModelAttribute("ninjas") Ninja ninja, BindingResult result, Model model) {
 		if(result.hasErrors()) {
-			
+		List<Dojo> dojos = dojoService.allDojos();
+		model.addAttribute("dojos",dojos);
 			return "Ninja.jsp";
 		}else {
 			

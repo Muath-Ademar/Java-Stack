@@ -7,9 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <meta charset="UTF-8">
 <title>Dojo Page</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+
+
 </head>
 <body>
 <h1><c:out value="${newdojo.name}"></c:out></h1>
