@@ -52,4 +52,14 @@ public class UserService {
 		return user;
 	}
 
+	public User findById(Long id) {
+		// TODO Auto-generated method stub
+		Optional<User> user =userrepo.findById(id);
+		if(user.isPresent()) {
+			return user.get();
+		}
+		
+		  return null;
+	}
+
 }
