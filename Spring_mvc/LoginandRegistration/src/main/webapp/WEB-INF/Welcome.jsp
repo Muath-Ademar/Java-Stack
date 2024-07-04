@@ -29,6 +29,7 @@
 				<th scope="col" style="width: 25%;">Title</th>
 				<th scope="col" style="width: 25%;">Author</th>
 				<th scope="col" style="width: 25%;">posted by</th>
+				<th scope="col" style="width: 25%;">Action</th>
 				
 
 			</tr>
@@ -40,6 +41,10 @@
 					<td scope="row"><a href="/books/${book.id}"><c:out value="${book.title}"></a></c:out></td>
 					<td scope="row"><c:out value="${book.author}" ></c:out></td>
 					<td scope="row"><c:out value="${book.user.userName}" ></c:out></td>
+					<td scope="row"><c:if test = "${Theuser==book.user.id}">
+					<p><a href="/books/${book.id}/edit">edit</a></p>
+					</c:if></td>
+
 				</tr>
 			 </c:forEach> 
 		</tbody>
