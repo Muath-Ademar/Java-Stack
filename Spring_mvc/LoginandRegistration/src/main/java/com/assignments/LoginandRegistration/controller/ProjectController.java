@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -97,9 +98,9 @@ public class ProjectController {
 
 	}
 
-	@PutMapping("edit/{id}")
-	public String edit(@Valid @PathVariable("id") Long id, @ModelAttribute("projects") Project project,
-			BindingResult result, HttpSession session) {
+	@PatchMapping("edit/{id}")
+	public String edit(@Valid @ModelAttribute("projects") Project project,
+			BindingResult result,@PathVariable("id") Long id, HttpSession session) {
 		if (session.getAttribute("userid") == null) {
 			return "redirect:/logout";
 		}
@@ -107,10 +108,11 @@ public class ProjectController {
 		if (result.hasErrors()) {
 			return "editproject.jsp";
 		}
-		User user = userservice.findById((Long) session.getAttribute("userid"));
-		project.setUser(user);
-		project.getTeam().add(user);
-		projectService.editProject(project);
+		Project project1 = projectService.findProject(id);
+		project1.setTitle(project.getTitle());
+		project1.setDescription(project.getTitle());
+		project1.setDueDate(project.getDueDate());
+		projectService.editProject(project1);
 
 		return "redirect:/dash";
 

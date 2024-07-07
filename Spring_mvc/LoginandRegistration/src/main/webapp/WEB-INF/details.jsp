@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Project Details</title>
+<a href="/dash">Dashboard</a>
 </head>
 <body>
 <h1>Project Details</h1>

@@ -16,7 +16,7 @@
 </head>
 <body>
     <form:form action="/edit/${projects.id}" method="post" modelAttribute="projects">
-        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="_method" value="patch">
         <h1>Edit</h1>
         <p>
             <form:label path="title" class="form-label">Project Name</form:label>
@@ -34,6 +34,7 @@
             <form:input type="date" path="dueDate" class="form-control" />
         </p>
         <input type="submit" value="Submit" />
+        <a href="/dash">Cancel</a>
     </form:form>
 </body>
 </html>

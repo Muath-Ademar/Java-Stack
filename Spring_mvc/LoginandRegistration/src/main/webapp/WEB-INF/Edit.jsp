@@ -36,7 +36,9 @@
         </p>
 
         <input type="submit" value="Submit" />
+        <a href="/dash">Cancel</a>
     </form:form>
+    
 </body>
 </html>
 </body>
