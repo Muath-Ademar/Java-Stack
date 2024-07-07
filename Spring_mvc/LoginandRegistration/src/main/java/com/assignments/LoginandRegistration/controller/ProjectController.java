@@ -19,6 +19,7 @@ import com.assignments.LoginandRegistration.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import jakarta.websocket.Session;
 
 @Controller
 public class ProjectController {
@@ -29,10 +30,15 @@ public class ProjectController {
 
 	@GetMapping("/dash")
 	public String dashboard(@ModelAttribute("user") User user, Model model, HttpSession session) {
+		if (session.getAttribute("userid") == null) {
+			return "redirect:/logout";
+		}
 		Long userId = (Long) session.getAttribute("userid");
 		User currentUser = userservice.findById(userId);
 		model.addAttribute("user", currentUser);
-		model.addAttribute("projects", projectService.allProject());
+		model.addAttribute("assigned", projectService.findAssignedProject(currentUser));
+		model.addAttribute("projects", projectService.NotAssigned(currentUser));
+		
 		return "Welcome.jsp";
 	}
 
@@ -49,38 +55,65 @@ public class ProjectController {
 		}
 		User user = userservice.findById((Long) session.getAttribute("userid"));
 		project.setUser(user);
+		project.getTeam().add(user);
 		projectService.createProject(project);
+		return "redirect:/dash";
+	}
+	
+	@GetMapping("/join/{id}")
+	public String join(@PathVariable("id") Long id, HttpSession session ) {
+		if(session.getAttribute("userid")==null) {
+			return "redirect:/logout";
+		}
+		Project project1 = projectService.findProject(id);
+		User user = userservice.findById((Long) session.getAttribute("userid"));
+		project1.getTeam().add(user);
+		projectService.editProject(project1);
+		
+
+		return "redirect:/dash";
+	}
+
+	@GetMapping("join/{id}/delete")
+	public String Leave(@PathVariable("id") Long id, HttpSession session) {
+		Project project = projectService.findProject(id);
+		User user = userservice.findById((Long) session.getAttribute("userid"));
+		projectService.leave(user, project);
 		return "redirect:/dash";
 	}
 
 	@GetMapping("projects/edit/{id}")
 	public String showEdit(@PathVariable("id") Long id, Model model, HttpSession session) {
-		if(session.getAttribute("userid") == null) {
+		if (session.getAttribute("userid") == null) {
 			return "redirect:/logout";
+		} else {
+			Project project = projectService.findProject(id);
+			User user = userservice.findById((Long) session.getAttribute("userid"));
+			project.setUser(user);
+			project.getTeam().add(user);
+			model.addAttribute("projects", project);
+			return "editproject.jsp";
 		}
-		
-		Project project = projectService.findProject(id);
-		model.addAttribute("projects", project);
-		return "editproject.jsp";
+
 	}
+
 	@PutMapping("edit/{id}")
-	public String edit(@Valid @PathVariable("id") Long id, @ModelAttribute("projects") Project project, BindingResult result
-			, HttpSession session) {
+	public String edit(@Valid @PathVariable("id") Long id, @ModelAttribute("projects") Project project,
+			BindingResult result, HttpSession session) {
 		if (session.getAttribute("userid") == null) {
 			return "redirect:/logout";
 		}
 
-		
-		
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return "editproject.jsp";
 		}
-		User userId= userservice.findById((Long) session.getAttribute("userid"));
-		project.setUser(userId);
-		 projectService.editProject(project);
-		
+		User user = userservice.findById((Long) session.getAttribute("userid"));
+		project.setUser(user);
+		project.getTeam().add(user);
+		projectService.editProject(project);
+
 		return "redirect:/dash";
-			
+
 	}
 
 	@GetMapping("projects/{id}")

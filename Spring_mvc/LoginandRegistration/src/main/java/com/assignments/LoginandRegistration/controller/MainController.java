@@ -33,7 +33,7 @@ public class MainController {
     @PostMapping("/register")
     public String register(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, Model model, 
     		HttpSession session) {
-    	
+
     	User user = userservice.register(newUser, result);
     	if(result.hasErrors()) {
     		model.addAttribute("newLogin", new LogIn());
@@ -47,17 +47,20 @@ public class MainController {
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute("newLogin")LogIn newLogin, BindingResult result, Model model,
     		HttpSession session) {
+
     	User user = userservice.login(newLogin, result);
     	if(result.hasErrors()) {
     		model.addAttribute("newUser", new User());
     		return "index.jsp";
     	}
+    	
     	session.setAttribute("userid", user.getId());
     	return "redirect:/dash";
     }
     @GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.setAttribute("userId", null); 
+    	session.invalidate();
+
 	    return "redirect:/";
 	}
     	

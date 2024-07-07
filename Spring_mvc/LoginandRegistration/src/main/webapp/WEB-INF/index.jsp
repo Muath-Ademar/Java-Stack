@@ -58,14 +58,14 @@
 			<form:form action="/login" method="post" modelAttribute="newLogin">
 				<div>
 					<form:label path="email">Email</form:label>
-					<form:errors path="email" />
 					<form:input path="email" />
 				</div>
 				<div>
 					<form:label path="password">Password</form:label>
-					<form:errors path="password" />
 					<form:input type="password" path="password" />
 				</div>
+				<p><form:errors path="email" /></p>
+				<p>	<form:errors path="password" /></p>
 				<input type="submit" value="Login">
 			</form:form>
 		</div>
